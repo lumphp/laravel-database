@@ -208,20 +208,4 @@ trait BuildsQueries
             'items', 'total', 'perPage', 'currentPage', 'options'
         ));
     }
-
-    /**
-     * Create a new simple paginator instance.
-     *
-     * @param  \Illuminate\Support\Collection  $items
-     * @param  int  $perPage
-     * @param  int  $currentPage
-     * @param  array  $options
-     * @return \Illuminate\Pagination\Paginator
-     */
-    protected function simplePaginator($items, $perPage, $currentPage, $options)
-    {
-        return Container::getInstance()->makeWith(Paginator::class, compact(
-            'items', 'perPage', 'currentPage', 'options'
-        ));
-    }
 }

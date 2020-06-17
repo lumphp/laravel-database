@@ -2208,45 +2208,16 @@ class Builder
      *
      * @param  int  $perPage
      * @param  array  $columns
-     * @param  string  $pageName
-     * @param  int|null  $page
+     * @param  int  $page
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
+    public function paginate(int $perPage = 15, $columns = ['*'], int $page = 1)
     {
-        $page = $page ?: Paginator::resolveCurrentPage($pageName);
-
         $total = $this->getCountForPagination();
 
         $results = $total ? $this->forPage($page, $perPage)->get($columns) : collect();
 
-        return $this->paginator($results, $total, $perPage, $page, [
-            'path' => Paginator::resolveCurrentPath(),
-            'pageName' => $pageName,
-        ]);
-    }
-
-    /**
-     * Get a paginator only supporting simple next and previous links.
-     *
-     * This is more efficient on larger data-sets, etc.
-     *
-     * @param  int  $perPage
-     * @param  array  $columns
-     * @param  string  $pageName
-     * @param  int|null  $page
-     * @return \Illuminate\Contracts\Pagination\Paginator
-     */
-    public function simplePaginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
-    {
-        $page = $page ?: Paginator::resolveCurrentPage($pageName);
-
-        $this->offset(($page - 1) * $perPage)->limit($perPage + 1);
-
-        return $this->simplePaginator($this->get($columns), $perPage, $page, [
-            'path' => Paginator::resolveCurrentPath(),
-            'pageName' => $pageName,
-        ]);
+        return $this->paginator($results, $total, $perPage, $page);
     }
 
     /**

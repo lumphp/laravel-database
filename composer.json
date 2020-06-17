@@ -20,7 +20,7 @@
         "lumphp/laravel-container": "^7.0",
         "lumphp/laravel-contracts": "^7.0",
         "lumphp/laravel-support": "^7.0",
-        "symfony/console": "^5.0"
+        "symfony/console": "^5.1"
     },
     "autoload": {
         "psr-4": {

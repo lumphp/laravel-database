@@ -1,5 +1,9 @@
 ## Illuminate Database
 
+[![Total Downloads](https://poser.pugx.org/lumphp/laravel-database/downloads)](//packagist.org/packages/lumphp/laravel-database)
+[![Latest Stable Version](https://poser.pugx.org/lumphp/laravel-database/v)](//packagist.org/packages/lumphp/laravel-database)
+[![License](https://poser.pugx.org/lumphp/laravel-database/license)](//packagist.org/packages/lumphp/laravel-database)
+
 The Illuminate Database component is a full database toolkit for PHP, providing an expressive query builder, ActiveRecord style ORM, and schema builder. It currently supports MySQL, Postgres, SQL Server, and SQLite. It also serves as the database layer of the Laravel PHP framework.
 
 ### Usage Instructions

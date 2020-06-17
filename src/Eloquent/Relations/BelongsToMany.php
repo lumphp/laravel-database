@@ -819,33 +819,14 @@ class BelongsToMany extends Relation
      *
      * @param  int|null  $perPage
      * @param  array  $columns
-     * @param  string  $pageName
      * @param  int|null  $page
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function paginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null)
+    public function paginate($perPage = null, $columns = ['*'], int $page = 1)
     {
         $this->query->addSelect($this->shouldSelect($columns));
 
-        return tap($this->query->paginate($perPage, $columns, $pageName, $page), function ($paginator) {
-            $this->hydratePivotRelation($paginator->items());
-        });
-    }
-
-    /**
-     * Paginate the given query into a simple paginator.
-     *
-     * @param  int|null  $perPage
-     * @param  array  $columns
-     * @param  string  $pageName
-     * @param  int|null  $page
-     * @return \Illuminate\Contracts\Pagination\Paginator
-     */
-    public function simplePaginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null)
-    {
-        $this->query->addSelect($this->shouldSelect($columns));
-
-        return tap($this->query->simplePaginate($perPage, $columns, $pageName, $page), function ($paginator) {
+        return tap($this->query->paginate($perPage, $columns, $page), function ($paginator) {
             $this->hydratePivotRelation($paginator->items());
         });
     }
